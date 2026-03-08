@@ -1,0 +1,1 @@
+import{La as o,Ma as s,Ta as i,wa as t}from"./chunk-L7M7BC37.js";var r=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=t({type:n,selectors:[["app-friends"]],decls:2,vars:0,template:function(e,a){e&1&&(o(0,"p"),i(1,"friends works!"),s())},encapsulation:2})};export{r as FriendsComponent};

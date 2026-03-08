@@ -1,0 +1,1 @@
+import{La as o,Ma as i,Ta as m,wa as t}from"./chunk-L7M7BC37.js";var a=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=t({type:n,selectors:[["app-admin"]],decls:2,vars:0,template:function(e,s){e&1&&(o(0,"p"),m(1,"admin works!"),i())},encapsulation:2})};export{a as AdminComponent};

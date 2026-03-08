@@ -1,0 +1,52 @@
+<div style="max-width: 900px; margin: 20px auto; font-family: Arial;">
+  <h2>Friends</h2>
+
+  <div style="border:1px solid #ddd; padding:12px; border-radius:8px; margin-bottom:16px;">
+    <h3>Send Friend Request (by email)</h3>
+    <input [(ngModel)]="email" placeholder="user@email.com" style="width:70%; padding:8px;">
+    <button (click)="send()" style="margin-left:8px; padding:8px 12px;">Send</button>
+  </div>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+    <div style="border:1px solid #eee; padding:12px; border-radius:8px;">
+      <h3>Incoming Requests</h3>
+      <div *ngFor="let r of incomingReqs" style="border-top:1px solid #f1f1f1; padding:8px 0;">
+        <b>{{ r.sender.fullName || r.sender.email }}</b>
+        <div style="margin-top:6px;">
+          <button (click)="accept(r.id)">✅ Accept</button>
+          <button (click)="reject(r.id)" style="margin-left:8px;">❌ Reject</button>
+          <button (click)="block(r.sender.id)" style="margin-left:8px;">⛔ Block</button>
+        </div>
+      </div>
+      <div *ngIf="incomingReqs.length===0" style="color:#777;">No incoming requests</div>
+    </div>
+
+    <div style="border:1px solid #eee; padding:12px; border-radius:8px;">
+      <h3>Outgoing Requests</h3>
+      <div *ngFor="let r of outgoingReqs" style="border-top:1px solid #f1f1f1; padding:8px 0;">
+        <b>{{ r.receiver.fullName || r.receiver.email }}</b>
+        <div style="color:#777; font-size:12px;">Pending</div>
+      </div>
+      <div *ngIf="outgoingReqs.length===0" style="color:#777;">No outgoing requests</div>
+    </div>
+  </div>
+
+  <div style="border:1px solid #eee; padding:12px; border-radius:8px; margin-top:16px;">
+    <h3>My Friends</h3>
+    <div *ngFor="let f of friends" style="border-top:1px solid #f1f1f1; padding:8px 0;">
+      <b>{{ f.fullName || f.email }}</b>
+      <button (click)="unfriend(f.id)" style="margin-left:10px;">Unfriend</button>
+      <button (click)="block(f.id)" style="margin-left:8px;">Block</button>
+    </div>
+    <div *ngIf="friends.length===0" style="color:#777;">No friends yet</div>
+  </div>
+
+  <div style="border:1px solid #eee; padding:12px; border-radius:8px; margin-top:16px;">
+    <h3>Blocked Users</h3>
+    <div *ngFor="let b of blocked" style="border-top:1px solid #f1f1f1; padding:8px 0;">
+      <b>{{ b.fullName || b.email }}</b>
+      <button (click)="unblock(b.id)" style="margin-left:10px;">Unblock</button>
+    </div>
+    <div *ngIf="blocked.length===0" style="color:#777;">No blocked users</div>
+  </div>
+</div>

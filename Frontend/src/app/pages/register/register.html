@@ -1,0 +1,30 @@
+<section class="auth-page">
+  <h2>Register</h2>
+
+  <form (ngSubmit)="submit()">
+    <input
+      type="text"
+      name="fullName"
+      [(ngModel)]="model.fullName"
+      placeholder="Full name"
+      required
+    />
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="model.email"
+      placeholder="Email"
+      required
+    />
+    <input
+      type="password"
+      name="password"
+      [(ngModel)]="model.password"
+      placeholder="Password"
+      required
+    />
+    <button type="submit" [disabled]="loading">{{ loading ? 'Creating...' : 'Register' }}</button>
+  </form>
+
+  <p *ngIf="error" class="error">{{ error }}</p>
+</section>

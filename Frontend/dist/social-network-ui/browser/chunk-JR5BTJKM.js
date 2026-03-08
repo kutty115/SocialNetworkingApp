@@ -1,0 +1,1 @@
+import{La as o,Ma as a,Ta as p,wa as n}from"./chunk-L7M7BC37.js";var s=class e{static \u0275fac=function(t){return new(t||e)};static \u0275cmp=n({type:e,selectors:[["app-chat"]],decls:2,vars:0,template:function(t,i){t&1&&(o(0,"p"),p(1,"chat works!"),a())},encapsulation:2})};export{s as ChatComponent};

@@ -1,0 +1,30 @@
+<div style="max-width:700px;margin:20px auto;font-family:Arial;">
+  <h2>My Profile</h2>
+
+  <!-- show only while loading -->
+  <div *ngIf="loading; else profileForm">
+    Loading...
+  </div>
+
+  <!-- show after loading false -->
+  <ng-template #profileForm>
+    <label><b>Full Name</b></label>
+    <input [(ngModel)]="model.fullName" style="width:100%;margin:6px 0;" />
+
+    <label><b>Bio</b></label>
+    <textarea [(ngModel)]="model.bio" rows="3" style="width:100%;margin:6px 0;"></textarea>
+
+    <label><b>Profile Image URL</b></label>
+    <input [(ngModel)]="model.profileImageUrl" style="width:100%;margin:6px 0;" />
+
+    <div *ngIf="model.profileImageUrl" style="margin:10px 0;">
+      <b>Preview:</b><br />
+      <img [src]="model.profileImageUrl"
+           style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-top:6px;">
+    </div>
+
+    <button (click)="save()" [disabled]="saving">
+      {{ saving ? 'Saving...' : 'Save Profile' }}
+    </button>
+  </ng-template>
+</div>

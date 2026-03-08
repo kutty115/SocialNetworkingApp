@@ -1,0 +1,41 @@
+<div style="max-width: 700px; margin: 20px auto; font-family: Arial;">
+  <h2>News Feed</h2>
+
+  <div style="border: 1px solid #ddd; padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+    <h3>Create Post</h3>
+    <textarea [(ngModel)]="newPost.content" rows="3" style="width: 100%;" placeholder="What's on your mind?"></textarea>
+    <input [(ngModel)]="newPost.imageUrl" style="width: 100%; margin-top: 8px;" placeholder="Image URL (optional)" />
+    <button (click)="createPost()" style="margin-top: 8px;">Post</button>
+  </div>
+
+  <div *ngIf="loading">Loading feed...</div>
+
+  <div *ngFor="let p of posts" style="border: 1px solid #eee; padding: 12px; border-radius: 8px; margin-bottom: 12px;">
+    <div style="font-weight: bold;">
+      {{ p.user?.fullName || 'User' }}
+      <span style="font-weight: normal; color: #777; font-size: 12px;">
+        • {{ p.createdAt | date:'short' }}
+      </span>
+    </div>
+
+    <p style="margin: 10px 0;">{{ p.content }}</p>
+
+    <img *ngIf="p.imageUrl" [src]="p.imageUrl" style="max-width: 100%; border-radius: 6px;" />
+
+    <div style="margin-top: 10px;">
+      <button (click)="like(p.id)">👍 Like</button>
+      <span style="margin-left: 10px;">Likes: {{ p.likeCount }}</span>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <input [(ngModel)]="commentText[p.id]" placeholder="Write a comment..." style="width: 75%;" />
+      <button (click)="addComment(p.id)">Comment</button>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <div *ngFor="let c of p.comments">
+        <b>{{ c.user?.fullName || 'User' }}:</b> {{ c.text }}
+      </div>
+    </div>
+  </div>
+</div>
